@@ -19,8 +19,11 @@
 from eve import Eve
 from oauth2 import BearerAuth
 from flask.ext.sentinel import ResourceOwnerPasswordCredentials, oauth
+from os.path import abspath, dirname
 
 app = Eve(auth=BearerAuth)
+app.root_path = abspath(dirname(__file__))
+
 ResourceOwnerPasswordCredentials(app)
 
 
